@@ -1,7 +1,7 @@
 package vosk
 
 // #cgo CPPFLAGS: -I ${SRCDIR}/../src
-// #cgo !windows LDFLAGS: -L ${SRCDIR}/../src -lvosk -ldl -lpthread
+// #cgo !windows LDFLAGS: -L ${SRCDIR}/../src -lvosk -ldl
 // #cgo windows LDFLAGS: -L ${SRCDIR}/../src -lvosk -lpthread
 // #include <stdlib.h>
 // #include <vosk_api.h>
@@ -104,11 +104,11 @@ func (r *VoskRecognizer) SetSpkModel(spkModel *VoskSpkModel) {
 }
 
 // SetGrm sets which phrases to recognize on an already initialized recognizer.
-func (r *VoskRecognizer) SetGrm(grammar string) {
-	cgrammar := C.CString(grammar)
-	defer C.free(unsafe.Pointer(cgrammar))
-	C.vosk_recognizer_set_grm(r.rec, cgrammar)
-}
+//func (r *VoskRecognizer) SetGrm(grammar string) {
+//	cgrammar := C.CString(grammar)
+//	defer C.free(unsafe.Pointer(cgrammar))
+//	C.vosk_recognizer_set_grm(r.rec, cgrammar)
+//}
 
 // SetMaxAlternatives configures the recognizer to output n-best results.
 func (r *VoskRecognizer) SetMaxAlternatives(maxAlternatives int) {
